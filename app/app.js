@@ -1,4 +1,4 @@
-
+""
 
 angular.module('app', [])
     .controller('gitHubDataController', ['$scope','$http', function($scope,$http) {
@@ -7,7 +7,7 @@ angular.module('app', [])
 
         $scope.userLoaded = false;
 
-        $scope.username = "pdsullivan";
+        $scope.username = "spacetexan";
 
         $http.get("https://api.github.com/users/" + $scope.username)
             .success(function (data) {
@@ -19,6 +19,7 @@ angular.module('app', [])
             $http.get($scope.userData.repos_url)
                 .success(function (data) {
                     $scope.repoData = data;
+                    console.log(data);
                 });
         };
 
