@@ -1,0 +1,31 @@
+<html ng-app="app">
+<head>
+    <link rel="shortcut icon" href="http://www.pdsullivan.com/favicon.ico" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+
+    <title>Jason Hoover GitHub</title>
+
+    <link rel="stylesheet" href="lib/custombootstrap.css" media="screen" title="no title" charset="utf-8">
+    <link rel="stylesheet" href="lib/fontawesome/css/font-awesome.min.css" media="screen" title="no title" charset="utf-8">
+    <link rel="stylesheet" href="lib/octicons/octicons/octicons.css" media="screen" title="no title" charset="utf-8">
+    <link rel="stylesheet" href="lib/site.css" media="screen" title="no title" charset="utf-8">
+</head>
+<body  ng-controller="gitHubDataController">
+
+<div ng-repeat="commit in commitData">
+    <ol>
+        <li> <a ng-href="{{commit.html_url}}">Commit </a></li>
+        <li>Committer:{{commit.commit.author.name}}</li>
+        <li>Comment: {{commit.commit.message}}</li>
+
+
+    </ol>
+
+</div>
+<li><b>TODO: list of files changed, found in object.files when calling https://api.github.com/repos/spacetexan/tripviewer/commits/:sha</b></li>
+<script src="lib/angular/angular.min.js" charset="utf-8"></script>
+<script src="app/app.js" charset="utf-8"></script>
+
+</body>
+</html>

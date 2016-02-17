@@ -1,7 +1,7 @@
 
 <html ng-app="app">
 <head>
-    <link rel="shortcut icon" href="http://www.pdsullivan.com/favicon.ico" type="image/x-icon" />
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
 
@@ -26,10 +26,14 @@
 
     </h1>
     <fieldset ><legend>RepoData</legend>
-    Number of Pull Requests= {{pullData.length}}</fieldset>
+    Number of Pull Requests=
+        <a ng-href=Pull.html>{{pullData.length}}</a>
+    </fieldset>
 
     <fieldset ><legend>Commit Data</legend>
-        Number of Commits this week= {{commitData.length}}</fieldset>
+        Number of Commits this week=
+        <a ng-href=Commit.html>{{commitData.length}}</a>
+    </fieldset>
 
 
     <div class="panel  panel-default">
@@ -86,6 +90,6 @@
 <script src="lib/angular/angular.min.js" charset="utf-8"></script>
 <script src="app/app.js" charset="utf-8"></script>
 
-</body>
+
 </body>
 </html>

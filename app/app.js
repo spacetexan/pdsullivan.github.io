@@ -15,13 +15,18 @@ angular.module('app', [])
                 loadRepos();
             });
 
-        $http.get("https://api.github.com/repos/" + $scope.username + "/tripviewer/pulls/1/commits" )
+        $http.get("https://api.github.com/repos/" + $scope.username + "/tripviewer/commits?since=2016-02-16T01:52:05Z")
             .success(function (data) {
-                $scope.userData = data;
+                $scope.commitData = data;
                console.log('commit data');
-                console.log(data[0].author.login);
-                console.log(data[0].commit.message);
-                console.log(data[0].html_url);
+              console.log(data);
+            });
+
+        $http.get("https://api.github.com/repos/" + $scope.username + "/tripviewer/pulls" )
+            .success(function (data) {
+                $scope.pullData = data;
+                console.log('pull data');
+
                 console.log(data);
             });
 
@@ -30,57 +35,16 @@ angular.module('app', [])
             $http.get($scope.userData.repos_url)
                 .success(function (data) {
                     $scope.repoData = data;
-                   // console.log($scope.repoData[0]);
                  });
         };
 
-   /*     $http.get("https://api.github.com/repos/:owner/:repo/pulls/:number/commits" + $scope.username)
-            .success(function (data) {
-                $scope.userData = data;
-                loadRepos();
-            });
-*/
+
+
+
+
 
         $scope.predicate = '-updated_at';
 
 
 }]);
 
-
-
-
-/*
-{
-  "login": "pdsullivan",
-  "id": 2042218,
-  "avatar_url": "https://avatars.githubusercontent.com/u/2042218?v=2",
-  "gravatar_id": "",
-  "url": "https://api.github.com/users/pdsullivan",
-  "html_url": "https://github.com/pdsullivan",
-  "followers_url": "https://api.github.com/users/pdsullivan/followers",
-  "following_url": "https://api.github.com/users/pdsullivan/following{/other_user}",
-  "gists_url": "https://api.github.com/users/pdsullivan/gists{/gist_id}",
-  "starred_url": "https://api.github.com/users/pdsullivan/starred{/owner}{/repo}",
-  "subscriptions_url": "https://api.github.com/users/pdsullivan/subscriptions",
-  "organizations_url": "https://api.github.com/users/pdsullivan/orgs",
-  "repos_url": "https://api.github.com/users/pdsullivan/repos",
-  "events_url": "https://api.github.com/users/pdsullivan/events{/privacy}",
-  "received_events_url": "https://api.github.com/users/pdsullivan/received_events",
-  "type": "User",
-  "site_admin": false,
-  "name": "Patrick Sullivan",
-  "company": "I work at Greenway Health by day and for the voices in my head by night.",
-  "blog": "http://www.pdsullivan.com",
-  "location": "Birmingham, Alabama",
-  "email": "patrick@pdsullivan.com",
-  "hireable": true,
-  "bio": null,
-  "public_repos": 12,
-  "public_gists": 0,
-  "followers": 4,
-  "following": 7,
-  "created_at": "2012-07-25T18:55:33Z",
-  "updated_at": "2014-09-26T20:04:12Z"
-}
-
-*/
