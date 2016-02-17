@@ -15,14 +15,31 @@ angular.module('app', [])
                 loadRepos();
             });
 
+        $http.get("https://api.github.com/repos/" + $scope.username + "/tripviewer/pulls/1/commits" )
+            .success(function (data) {
+                $scope.userData = data;
+               console.log('commit data');
+                console.log(data[0].author.login);
+                console.log(data[0].commit.message);
+                console.log(data[0].html_url);
+                console.log(data);
+            });
+
+
         var loadRepos = function () {
             $http.get($scope.userData.repos_url)
                 .success(function (data) {
                     $scope.repoData = data;
-                    console.log(data);
-                });
+                   // console.log($scope.repoData[0]);
+                 });
         };
 
+   /*     $http.get("https://api.github.com/repos/:owner/:repo/pulls/:number/commits" + $scope.username)
+            .success(function (data) {
+                $scope.userData = data;
+                loadRepos();
+            });
+*/
 
         $scope.predicate = '-updated_at';
 
